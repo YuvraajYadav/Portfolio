@@ -1,1 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuvraaj Yadav — Electronics &amp; Communication Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F0EA;
+    --paper-raised:#FBFAF7;
+    --ink:#1C232B;
+    --ink-soft:#5B6470;
+    --ink-faint:#8A8F97;
+    --line:#D9D4C6;
+    --accent:#7C5A33;
+    --accent-2:#3F6B63;
+    --accent-soft:#EAE1CE;
+  }
 
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent-soft); color:var(--ink);}
+  a{color:inherit; text-decoration:none;}
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  em{font-style:italic; font-family:'Fraunces',serif; font-weight:500; color:var(--accent);}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  .container{max-width:880px; margin:0 auto; padding:0 28px;}
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* ===== Header ===== */
+  header.topbar{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(242,240,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:880px; margin:0 auto; padding:20px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .wordmark{font-family:'Fraunces',serif; font-weight:600; font-size:18px;}
+  nav.links{display:flex; gap:30px; font-size:13.5px;}
+  nav.links a{color:var(--ink-soft); position:relative; padding:3px 0; transition:color .15s ease;}
+  nav.links a:hover{color:var(--ink);}
+  @media (max-width:700px){ nav.links{display:none;} }
+
+  main{padding-top:88px;}
+  section{padding:88px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+
+  .label{
+    display:flex; align-items:center; gap:10px;
+    font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:18px; font-weight:500;
+  }
+  .label::before{content:""; width:6px; height:6px; background:var(--accent); border-radius:1px; flex-shrink:0;}
+
+  .sec-head h2{font-size:clamp(26px,3.4vw,34px); margin-bottom:14px;}
+  .sec-head p.sub{color:var(--ink-soft); max-width:560px; font-size:15.5px;}
+
+  /* ===== Hero ===== */
+  .hero{
+    min-height:88vh; display:flex; flex-direction:column; justify-content:center;
+    border-bottom:1px solid var(--line);
+    padding:140px 0 64px;
+  }
+  .hero .label{margin-bottom:24px;}
+  .hero h1{
+    font-size:clamp(42px,7vw,72px);
+    line-height:1.05;
+    margin-bottom:8px;
+  }
+  .hero .role{
+    font-size:18px;
+    color:var(--ink-soft);
+    margin-bottom:26px;
+    font-weight:500;
+  }
+  .hero .lede{
+    font-size:18px;
+    max-width:600px;
+    color:var(--ink);
+    margin-bottom:38px;
+  }
+  .hero .lede b{font-weight:600;}
+  .hero-cta{display:flex; gap:28px; align-items:center; flex-wrap:wrap; margin-bottom:64px;}
+  .link-arrow{
+    font-size:14.5px; font-weight:600; color:var(--ink);
+    border-bottom:1.5px solid var(--ink);
+    padding-bottom:3px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .link-arrow:hover{color:var(--accent); border-color:var(--accent);}
+  .link-arrow.muted{color:var(--ink-soft); border-color:var(--line); font-weight:500;}
+  .link-arrow.muted:hover{color:var(--ink); border-color:var(--ink);}
+
+  /* Stat strip — signature element, grounded in real numbers */
+  .stat-strip{
+    display:flex; flex-wrap:wrap;
+    border-top:1px solid var(--line);
+    padding-top:32px;
+  }
+  .stat{
+    flex:1 1 160px;
+    padding:0 28px 0 0;
+    border-right:1px solid var(--line);
+    margin-right:28px;
+  }
+  .stat:last-child{border-right:none; margin-right:0; padding-right:0;}
+  .stat .num{font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--accent); line-height:1;}
+  .stat .desc{font-size:13px; color:var(--ink-soft); margin-top:8px; line-height:1.4;}
+  @media (max-width:700px){
+    .stat{flex:1 1 45%; border-right:none; margin-right:0; padding-right:0; margin-bottom:24px;}
+  }
+
+  /* ===== About ===== */
+  #about .container > p{max-width:680px; font-size:17px; color:var(--ink); margin-bottom:0;}
+  #about .container > p + p{margin-top:18px;}
+
+  /* ===== Skills ===== */
+  .skills-grid{display:grid; grid-template-columns:1fr; gap:32px;}
+  @media (min-width:700px){ .skills-grid{grid-template-columns:repeat(3,1fr);} }
+  .skill-block h4{
+    font-family:'Work Sans',sans-serif; font-weight:600; font-size:14px;
+    text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);
+    margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--line);
+  }
+  .skill-block .items{font-size:15.5px; color:var(--ink); line-height:1.9;}
+  .skill-block .items span{display:inline;}
+  .skill-block .items span:not(:last-child)::after{content:" · "; color:var(--ink-faint);}
+
+  /* ===== Experience ===== */
+  .exp-item{display:grid; grid-template-columns:1fr; gap:6px; padding:32px 0; border-bottom:1px solid var(--line);}
+  .exp-item:first-child{padding-top:0;}
+  .exp-item:last-child{border-bottom:none; padding-bottom:0;}
+  @media (min-width:700px){ .exp-item{grid-template-columns:160px 1fr; gap:32px;} }
+  .exp-date{font-size:13px; color:var(--ink-faint); padding-top:4px;}
+  .exp-body h3{font-size:20px; margin-bottom:3px;}
+  .exp-org{font-size:14.5px; color:var(--accent-2); font-weight:500; margin-bottom:14px;}
+  .exp-body ul{list-style:none; display:flex; flex-direction:column; gap:9px; max-width:600px; margin-bottom:14px;}
+  .exp-body li{position:relative; padding-left:18px; font-size:15px; color:var(--ink-soft);}
+  .exp-body li::before{content:"—"; position:absolute; left:0; color:var(--ink-faint);}
+  .stack-line{font-size:13px; color:var(--ink-faint);}
+  .stack-line b{color:var(--ink-soft); font-weight:500;}
+
+  /* ===== Projects ===== */
+  .project{padding:36px 0; border-bottom:1px solid var(--line);}
+  .project:first-child{padding-top:0;}
+  .project:last-child{border-bottom:none; padding-bottom:0;}
+  .project-head{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px; margin-bottom:6px;}
+  .project h3{font-size:22px;}
+  .project-date{font-size:13px; color:var(--ink-faint); padding-top:6px; white-space:nowrap;}
+  .project-meta{font-size:13.5px; color:var(--accent-2); font-weight:500; margin-bottom:14px;}
+  .project p.desc{font-size:15.5px; color:var(--ink-soft); max-width:660px; margin-bottom:16px;}
+  .outcome{
+    border-left:2px solid var(--accent);
+    padding-left:16px;
+    font-size:14.5px;
+    color:var(--ink);
+    max-width:600px;
+  }
+  .outcome b{color:var(--accent); font-weight:600;}
+
+  /* ===== Certifications ===== */
+  .cert-row{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px;
+    padding:16px 0; border-bottom:1px solid var(--line);
+  }
+  .cert-row:first-child{padding-top:0;}
+  .cert-row:last-child{border-bottom:none; padding-bottom:0;}
+  .cert-row .name{font-size:15.5px; font-weight:500;}
+  .cert-row .issuer{font-size:13.5px; color:var(--ink-soft); margin-left:8px;}
+  .cert-row .date{font-size:13px; color:var(--ink-faint); white-space:nowrap;}
+
+  /* ===== Education ===== */
+  .edu-row{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .edu-row:first-child{padding-top:0;}
+  .edu-row:last-child{border-bottom:none; padding-bottom:0;}
+  .edu-row h4{font-size:17px; margin-bottom:3px;}
+  .edu-row .deg{font-size:14.5px; color:var(--ink-soft);}
+  .edu-row .loc{font-size:13px; color:var(--ink-faint); margin-top:2px;}
+  .edu-right{text-align:right;}
+  .edu-right .score{font-family:'Fraunces',serif; font-weight:600; color:var(--accent); font-size:17px;}
+  .edu-right .span{font-size:12.5px; color:var(--ink-faint); margin-top:2px;}
+
+  /* ===== Contact ===== */
+  #contact{background:var(--paper-raised);}
+  #contact .sec-head p.sub{margin-bottom:36px;}
+  .contact-list{display:flex; flex-direction:column; gap:4px; margin-bottom:46px;}
+  .contact-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:16px 0; border-bottom:1px solid var(--line);
+  }
+  .contact-row .k{font-size:13px; letter-spacing:0.07em; text-transform:uppercase; color:var(--ink-faint);}
+  .contact-row .v{font-size:16px; font-weight:500;}
+  .contact-row .v a:hover{color:var(--accent);}
+
+  footer.site-end{
+    padding:28px 0 50px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-size:12.5px; color:var(--ink-faint);
+  }
+
+  /* ===== Reveal ===== */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#top">Yuvraaj Yadav</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container">
+      <div class="label">Electronics &amp; Communication Engineering</div>
+      <h1>Yuvraaj Yadav</h1>
+      <div class="role">Digital design &amp; embedded systems engineer</div>
+      <p class="lede">I work at the point where hardware and software meet — designing digital logic in Verilog, building embedded control systems on microcontrollers, and writing the <b>C++</b> underneath both. Currently completing my B.Tech at Lovely Professional University.</p>
+      <div class="hero-cta">
+        <a class="link-arrow" href="#projects">View my work →</a>
+        <a class="link-arrow muted" href="#contact">Get in touch</a>
+      </div>
+      <div class="stat-strip">
+        <div class="stat">
+          <div class="num">16-bit</div>
+          <div class="desc">CPU designed from the datapath up, in Verilog</div>
+        </div>
+        <div class="stat">
+          <div class="num">60%</div>
+          <div class="desc">drop in manual access after automating a door lock</div>
+        </div>
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="desc">hardware &amp; embedded projects built end-to-end</div>
+        </div>
+        <div class="stat">
+          <div class="num">7.52</div>
+          <div class="desc">CGPA, B.Tech Electronics &amp; Communication Engineering</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container reveal">
+      <div class="sec-head" style="margin-bottom:28px;">
+        <div class="label">About</div>
+        <h2>I like understanding a system from the transistor up.</h2>
+      </div>
+      <p>I'm an Electronics &amp; Communication Engineering student at Lovely Professional University, and most of what I build sits at the boundary between hardware and the code that controls it. My recent work includes architecting a 16-bit CPU in Verilog from first principles, and building embedded systems — a mobile-controlled smart lock, a sensor-driven appliance controller — that had to work reliably outside of a simulator, not just inside one.</p>
+      <p>I've also spent real time on the software side: implementing data structures like tries for predictive systems, and working comfortably across C++, Embedded C, Python and Verilog HDL depending on what a problem actually calls for. I'm currently looking for internships and entry-level roles where I can keep working at that intersection.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container reveal">
+      <div class="sec-head">
+        <div class="label">Skills</div>
+        <h2>What I build with.</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-block">
+          <h4>Languages</h4>
+          <div class="items">
+            <span>C++</span><span>Embedded C</span><span>Verilog HDL</span><span>Python</span><span>Java</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Tools &amp; Platforms</h4>
+          <div class="items">
+            <span>AMD Vivado</span><span>KiCAD</span><span>Arduino IDE</span><span>NCSim</span><span>Proteus</span><span>Thonny</span><span>TinkerCAD</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Strengths</h4>
+          <div class="items">
+            <span>Problem-solving</span><span>Analytical thinking</span><span>Adaptability</span><span>Logical reasoning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container reveal">
+      <div class="sec-head">
+        <div class="label">Experience</div>
+        <h2>Internships.</h2>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date mono">Jun 2025 –<br>Jul 2025</div>
+        <div class="exp-body">
+          <h3>Data Structures &amp; Algorithms Intern</h3>
+          <div class="exp-org">Lovely Professional University</div>
+          <ul>
+            <li>Designed and implemented a trie-based auto-suggestion system that ranks suggested words by historical usage frequency.</li>
+            <li>Worked with a small team to build a responsive web app demonstrating the system, backed by a MySQL database that tracked word usage over time.</li>
+            <li>Deepened my understanding of core data structures and their time/space trade-offs across realistic use cases.</li>
+          </ul>
+          <div class="stack-line"><b>Stack —</b> C++, CLion, MySQL, HTML5, CSS3, PHP</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date mono">Jun 2024 –<br>Jul 2024</div>
+        <div class="exp-body">
+          <h3>Community Development Intern</h3>
+          <div class="exp-org">Edupur Society Pvt. Ltd.</div>
+          <ul>
+            <li>Led educational sessions introducing students to electronics and communication engineering fundamentals — circuit design, microcontrollers, and programming.</li>
+            <li>Designed and demonstrated hands-on DIY electronics projects, including a signal system built on Arduino UNO.</li>
+          </ul>
+          <div class="stack-line"><b>Stack —</b> Arduino IDE, TinkerCAD</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container reveal">
+      <div class="sec-head">
+        <div class="label">Projects</div>
+        <h2>Selected work.</h2>
+        <p class="sub">A processor built from scratch, and two embedded systems built to solve a real, specific problem.</p>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>16-bit Single-Cycle CPU</h3>
+          <div class="project-date mono">Jul 2025</div>
+        </div>
+        <div class="project-meta">Verilog HDL · AMD Vivado</div>
+        <p class="desc">Designed and built a custom 16-bit single-cycle CPU architecture from scratch — datapath, register file, ALU, instruction memory, data memory, and control unit. Defined a complete instruction set covering arithmetic, logic, load/store, branch, and jump operations, then verified the design through waveform analysis and testbench-driven simulation across all five stages: fetch, decode, execute, memory access, and write-back.</p>
+        <div class="outcome"><b>Outcome —</b> a complete, independently verified CPU, with every instruction simulated and debugged stage-by-stage.</div>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Smart Door Lock System</h3>
+          <div class="project-date mono">Aug 2024</div>
+        </div>
+        <div class="project-meta">Arduino IDE · TinkerCAD · MIT App Inventor</div>
+        <p class="desc">Built a password-protected, mobile-controlled door lock with live intrusion alerts. Designed and simulated the full circuit in TinkerCAD, then built a companion mobile app in MIT App Inventor for remote locking and monitoring.</p>
+        <div class="outcome"><b>Outcome —</b> cut manual access by 60% and improved intrusion response time by 50%.</div>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Multi-Zonal Appliance Control System</h3>
+          <div class="project-date mono">Sep 2024</div>
+        </div>
+        <div class="project-meta">Arduino IDE · Proteus Professional</div>
+        <p class="desc">Built a microcontroller-driven system that reads occupancy and environmental data from PIR motion sensors and DHT22 sensors across multiple zones, then drives relay-based switching to automatically manage appliances zone by zone.</p>
+        <div class="outcome"><b>Outcome —</b> reduced power use in unoccupied zones while keeping conditions stable everywhere else.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container reveal">
+      <div class="sec-head">
+        <div class="label">Certifications</div>
+        <h2>Continued learning.</h2>
+      </div>
+
+      <div class="cert-row">
+        <div><span class="name">Database Management System</span><span class="issuer">— NPTEL, Swayam</span></div>
+        <div class="date mono">Sept 2025</div>
+      </div>
+      <div class="cert-row">
+        <div><span class="name">Data Structures and Algorithms</span><span class="issuer">— Coursera</span></div>
+        <div class="date mono">Jan 2026</div>
+      </div>
+      <div class="cert-row">
+        <div><span class="name">Python for Beginners: Mastering the Essentials</span><span class="issuer">— Scaler</span></div>
+        <div class="date mono">Oct 2023</div>
+      </div>
+      <div class="cert-row">
+        <div><span class="name">Certificate of Accomplishment — Problem Solving</span><span class="issuer">— HackerRank</span></div>
+        <div class="date mono">Mar 2025</div>
+      </div>
+      <div class="cert-row">
+        <div><span class="name">LPU Hackathon</span><span class="issuer">— Lovely Professional University</span></div>
+        <div class="date mono">Mar 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container reveal">
+      <div class="sec-head">
+        <div class="label">Education</div>
+        <h2>Academic record.</h2>
+      </div>
+
+      <div class="edu-row">
+        <div>
+          <h4>Lovely Professional University</h4>
+          <div class="deg">B.Tech, Electronics &amp; Communication Engineering</div>
+          <div class="loc">Phagwara, Punjab</div>
+        </div>
+        <div class="edu-right">
+          <div class="score">7.52 CGPA</div>
+          <div class="span mono">Aug 2023 – Present</div>
+        </div>
+      </div>
+
+      <div class="edu-row">
+        <div>
+          <h4>Kendriya Vidyalaya School, Barrackpore</h4>
+          <div class="deg">Intermediate — PCM</div>
+          <div class="loc">Barrackpore, West Bengal</div>
+        </div>
+        <div class="edu-right">
+          <div class="score">78%</div>
+          <div class="span mono">Apr 2022 – Mar 2023</div>
+        </div>
+      </div>
+
+      <div class="edu-row">
+        <div>
+          <h4>Kendriya Vidyalaya School, Barrackpore</h4>
+          <div class="deg">Matriculation</div>
+          <div class="loc">Barrackpore, West Bengal</div>
+        </div>
+        <div class="edu-right">
+          <div class="score">87%</div>
+          <div class="span mono">Apr 2020 – Mar 2021</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container reveal">
+      <div class="sec-head">
+        <div class="label">Contact</div>
+        <h2>Let's talk about a role.</h2>
+        <p class="sub">I'm open to internships and entry-level roles in embedded systems, digital design, and software engineering.</p>
+      </div>
+      <div class="contact-list">
+        <div class="contact-row">
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:yuviyadav3103@gmail.com">yuviyadav3103@gmail.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="k">Mobile</span>
+          <span class="v"><a href="tel:+919816009713">+91 98160 09713</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="k">LinkedIn</span>
+          <span class="v"><a href="http://www.linkedin.com/in/yuvraaj-yadav" target="_blank" rel="noopener">linkedin.com/in/yuvraaj-yadav</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="k">GitHub</span>
+          <span class="v"><a href="https://github.com/YuvraajYadav" target="_blank" rel="noopener">github.com/YuvraajYadav</a></span>
+        </div>
+      </div>
+      <a class="link-arrow" href="mailto:yuviyadav3103@gmail.com">Send an email →</a>
+    </div>
+    <div class="container">
+      <footer class="site-end">
+        <span>© 2026 Yuvraaj Yadav</span>
+        <span>Built with HTML, CSS &amp; JavaScript</span>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.1});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
